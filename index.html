@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good - Cheap - Fast Toggle</title>
+</head>
+<body>
+
+<h2>Choose Two:</h2>
+
+<label>
+    <input type="checkbox" id="good"> GOOD
+</label>
+<br>
+
+<label>
+    <input type="checkbox" id="cheap"> CHEAP
+</label>
+<br>
+
+<label>
+    <input type="checkbox" id="fast"> FAST
+</label>
+
+<script>
+    const good = document.getElementById("good");
+    const cheap = document.getElementById("cheap");
+    const fast = document.getElementById("fast");
+
+    function enforceRule(clicked) {
+        if (good.checked && cheap.checked && fast.checked) {
+            if (clicked === good) {
+                fast.checked = false;
+            } else if (clicked === cheap) {
+                good.checked = false;
+            } else {
+                cheap.checked = false;
+            }
+        }
+    }
+
+    good.addEventListener("change", () => enforceRule(good));
+    cheap.addEventListener("change", () => enforceRule(cheap));
+    fast.addEventListener("change", () => enforceRule(fast));
+</script>
+
+</body>
+</html>
